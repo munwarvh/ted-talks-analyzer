@@ -1,0 +1,36 @@
+# Development Environment Profile
+# Activated with: -Dspring.profiles.active=dev
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:tedtalks}?currentSchema=tedtalks
+    username: ${DB_USERNAME:tedtalks_user}
+    password: ${DB_PASSWORD:tedtalks_password}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 15
+      minimum-idle: 5
+      connection-timeout: 30000
+      max-lifetime: 1800000
+
+  flyway:
+    schemas: tedtalks
+    default-schema: tedtalks
+
+# Moderate logging for dev environment
+logging:
+  level:
+    com.iodigital.tedtalks: INFO
+    org.springframework.jdbc.core.JdbcTemplate: INFO
+    org.springframework.web: INFO
+
+# Actuator - expose most endpoints for debugging
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,env,loggers
+  endpoint:
+    health:
+      show-details: when-authorized
+

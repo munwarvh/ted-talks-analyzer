@@ -1,0 +1,114 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+logs/
+*.log.*
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE - IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# IDE - Eclipse
+.settings/
+.classpath
+.project
+.metadata/
+
+# IDE - VS Code
+.vscode/
+*.code-workspace
+
+# IDE - NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Application specific
+application-local.yaml
+application-secret.yaml
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# Test coverage reports
+coverage/
+*.exec
+
+# H2 Database files (if running locally)
+*.db
+*.trace.db
+*.lock.db
+
+# Spring Boot
+spring-boot-devtools.properties
+
+# Logs
+spring.log
+application.log
+
+# Temporary files
+temp/
+tmp/
+
+# Sensitive data
+*.key
+*.pem
+*.p12
+*.jks
+credentials/
+secrets/
+
+# CSV data files (large files)
+# Uncomment if you don't want to commit CSV data
+# *.csv
+# data/
+
+# Build artifacts
+dist/
+*.hprof
+
+# npm (if using frontend)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+

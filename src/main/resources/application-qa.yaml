@@ -1,0 +1,39 @@
+# QA/Testing Environment Profile
+# Activated with: -Dspring.profiles.active=qa
+
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:qa-db-server}:${DB_PORT:5432}/${DB_NAME:tedtalks}?currentSchema=tedtalks
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      max-lifetime: 1800000
+      leak-detection-threshold: 60000
+
+  flyway:
+    schemas: tedtalks
+    default-schema: tedtalks
+    # Baseline existing database if needed
+    baseline-version: 1
+    baseline-description: "Initial baseline"
+
+# Standard logging for QA
+logging:
+  level:
+    com.iodigital.tedtalks: INFO
+    org.springframework: WARN
+
+# Actuator - limited exposure for QA
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
