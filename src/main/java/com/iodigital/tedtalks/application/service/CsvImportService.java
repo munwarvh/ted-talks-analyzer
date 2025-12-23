@@ -7,9 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.time.Instant;
 import java.util.*;
@@ -81,27 +79,6 @@ public class CsvImportService implements CsvImporter {
         }
     }
 
-    @Override
-    @Transactional
-    public ImportResult importFromCsv(String importId, MultipartFile file) {
-        try {
-            log.info("Importing CSV file: {} ({} bytes)",
-                    file.getOriginalFilename(), file.getSize());
-            return importFromCsv(importId, file.getInputStream());
-        } catch (IOException e) {
-            log.error("Failed to read multipart file", e);
-            ImportResult failedResult = new ImportResult(
-                    importId,
-                    Instant.now(),
-                    Instant.now(),
-                    ImportResult.Status.FAILED,
-                    new ImportStatistics(),
-                    List.of("Failed to read file: " + e.getMessage())
-            );
-            importResults.put(importId, failedResult);
-            return failedResult;
-        }
-    }
 
     // Async version for background processing with proper transaction management
     @Async("csvImportExecutor")
