@@ -652,19 +652,21 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 ## 📞 Support
 
 For issues and questions:
-- **Email**: support@example.com
-- **Issues**: https://github.com/your-username/ted-talks-analyzer/issues
+- **Email**: munwarvh.mec@gmail.com
+- **Issues**: https://github.com/munwarvh/ted-talks-analyzer/issues
 
 ---
 
 ## 🎓 Additional Documentation
 
+- [Architecture & Flow Diagrams](ARCHITECTURE.md) - Complete system architecture with visual diagrams
 - [Docker Guide](DOCKER_GUIDE.md) - Complete Docker setup and deployment
 - [Database Setup Guide](POSTGRESQL_SETUP_GUIDE.md) - Detailed PostgreSQL setup
 - [Testing Guide](TESTING_GUIDE.md) - Comprehensive testing documentation
 - [API Reference](SWAGGER_FIX_GUIDE.md) - Complete API documentation
 - [Performance Optimization](OPTIMIZATION_SUMMARY.md) - Performance tuning guide
 - [Caching Documentation](CACHING_DOCUMENTATION.md) - Caching implementation details
+- [Caching Analysis](CACHING_ANALYSIS.md) - In-memory vs distributed caching
 - [Quick Start Guide](QUICK_START_GUIDE.md) - 5-minute setup guide
 - [Git Setup Guide](GIT_SETUP_GUIDE.md) - Git and GitHub instructions
 
