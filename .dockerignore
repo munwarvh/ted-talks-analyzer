@@ -1,0 +1,46 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.idea
+*.iml
+.vscode
+.DS_Store
+
+# Build
+target
+*.jar
+*.war
+
+# Logs
+logs
+*.log
+
+# Documentation
+*.md
+docs
+
+# Test files
+*.tmp
+*.bak
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Data files (large CSV files)
+data/*.csv
+*.csv
+
+# Sensitive files
+*.key
+*.pem
+credentials
+
+# OS
+.DS_Store
+Thumbs.db
+

@@ -8,12 +8,15 @@ A high-performance Spring Boot application for analyzing TED talks data with adv
 - [Tech Stack](#tech-stack)
 - [Prerequisites](#prerequisites)
 - [Getting Started](#getting-started)
+  - [Option 1: Docker (Recommended)](#option-1-docker-recommended)
+  - [Option 2: Local Setup](#option-2-local-setup)
 - [Database Setup](#database-setup)
 - [Running the Application](#running-the-application)
 - [Testing](#testing)
 - [API Documentation](#api-documentation)
 - [Project Structure](#project-structure)
 - [Performance Features](#performance-features)
+- [Docker Deployment](#docker-deployment)
 
 ---
 
@@ -33,6 +36,7 @@ A high-performance Spring Boot application for analyzing TED talks data with adv
 - **📚 API Documentation**: Interactive Swagger UI
 - **🧪 Automated Testing**: 36 tests covering critical functionality
 - **🏗️ Clean Architecture**: Hexagonal architecture with clear separation of concerns
+- **🐳 Docker Support**: One-command deployment with Docker Compose
 
 ---
 
@@ -45,10 +49,19 @@ A high-performance Spring Boot application for analyzing TED talks data with adv
 - **Testing**: JUnit 5, Mockito, Spring Test
 - **Caching**: Spring Cache (Caffeine)
 - **CSV Processing**: Apache Commons CSV
+- **Deployment**: Docker & Docker Compose
 
 ---
 
 ## 📦 Prerequisites
+
+### Option 1: Docker (Easiest - Recommended) 🐳
+
+- **Docker Desktop** ([Download](https://www.docker.com/products/docker-desktop/))
+  - Includes Docker and Docker Compose
+  - Works on macOS, Windows, and Linux
+
+### Option 2: Local Development
 
 Before you begin, ensure you have the following installed:
 
@@ -69,14 +82,37 @@ psql --version   # Should show PostgreSQL 16+
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repository
+### Option 1: Docker (Recommended) 🐳
+
+**Fastest way to get started - 2 commands!**
 
 ```bash
-git clone https://github.com/your-username/ted-talks-analyzer.git
+# 1. Clone the repository
+git clone https://github.com/munwarvh/ted-talks-analyzer.git
+cd ted-talks-analyzer
+
+# 2. Start everything with Docker Compose
+docker-compose up -d
+```
+
+**That's it!** The application will be available at:
+- **Swagger UI**: http://localhost:8080/swagger-ui.html
+- **Health Check**: http://localhost:8080/actuator/health
+
+For detailed Docker instructions, see [DOCKER_GUIDE.md](DOCKER_GUIDE.md)
+
+---
+
+### Option 2: Local Setup
+
+#### 1. Clone the Repository
+
+```bash
+git clone https://github.com/munwarvh/ted-talks-analyzer.git
 cd ted-talks-analyzer
 ```
 
-### 2. Database Setup
+#### 2. Database Setup
 
 #### Option A: PostgreSQL (Recommended for Production)
 
@@ -517,6 +553,72 @@ mvn versions:display-dependency-updates
 
 ---
 
+## 🐳 Docker Deployment
+
+### Quick Start with Docker Compose
+
+```bash
+# Start all services
+docker-compose up -d
+
+# Check status
+docker-compose ps
+
+# View logs
+docker-compose logs -f app
+
+# Stop services
+docker-compose down
+```
+
+### What's Included
+
+- **PostgreSQL 16**: Database with automatic initialization
+- **Spring Boot App**: Containerized application
+- **Health Checks**: Automatic health monitoring
+- **Data Persistence**: Volumes for database and logs
+- **Network**: Isolated Docker network
+
+### Docker Commands
+
+```bash
+# Build and start
+docker-compose up -d --build
+
+# Restart application only
+docker-compose restart app
+
+# View application logs
+docker-compose logs -f app
+
+# Access database
+docker-compose exec postgres psql -U tedtalks_user -d tedtalks_db
+
+# Stop and remove everything
+docker-compose down -v
+```
+
+### Services Running
+
+| Service | URL | Description |
+|---------|-----|-------------|
+| Application | http://localhost:8080 | Main API |
+| Swagger UI | http://localhost:8080/swagger-ui.html | API Documentation |
+| Health Check | http://localhost:8080/actuator/health | Health Status |
+| PostgreSQL | localhost:5432 | Database |
+
+### Docker Files
+
+- `docker-compose.yml` - Service orchestration
+- `Dockerfile` - Application container
+- `init-db.sql` - Database initialization
+- `.dockerignore` - Build optimization
+- `application-docker.yaml` - Docker profile
+
+For detailed Docker instructions, see **[DOCKER_GUIDE.md](DOCKER_GUIDE.md)**
+
+---
+
 ## 🤝 Contributing
 
 1. Fork the repository
@@ -557,11 +659,14 @@ For issues and questions:
 
 ## 🎓 Additional Documentation
 
+- [Docker Guide](DOCKER_GUIDE.md) - Complete Docker setup and deployment
 - [Database Setup Guide](POSTGRESQL_SETUP_GUIDE.md) - Detailed PostgreSQL setup
 - [Testing Guide](TESTING_GUIDE.md) - Comprehensive testing documentation
 - [API Reference](SWAGGER_FIX_GUIDE.md) - Complete API documentation
 - [Performance Optimization](OPTIMIZATION_SUMMARY.md) - Performance tuning guide
 - [Caching Documentation](CACHING_DOCUMENTATION.md) - Caching implementation details
+- [Quick Start Guide](QUICK_START_GUIDE.md) - 5-minute setup guide
+- [Git Setup Guide](GIT_SETUP_GUIDE.md) - Git and GitHub instructions
 
 ---
 

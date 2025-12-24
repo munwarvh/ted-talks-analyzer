@@ -1,0 +1,77 @@
+# Docker Profile Configuration
+spring:
+  application:
+    name: tedtalks-analyzer
+
+  datasource:
+    url: jdbc:postgresql://postgres:5432/tedtalks_db
+    username: tedtalks_user
+    password: tedtalks_pass
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    locations: classpath:db/migration
+    schemas: tedtalks
+    default-schema: tedtalks
+
+  jpa:
+    properties:
+      hibernate:
+        default_schema: tedtalks
+
+  cache:
+    type: caffeine
+    caffeine:
+      spec: maximumSize=1000,expireAfterWrite=60m
+
+# Server Configuration
+server:
+  port: 8080
+  compression:
+    enabled: true
+  shutdown: graceful
+
+# Management Endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.iodigital.tedtalks: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: DEBUG
+  file:
+    name: /app/logs/ted-talks-analyzer.log
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 30
+      total-size-cap: 1GB
+
+# Application Configuration
+app:
+  csv:
+    import:
+      batch-size: 1000
+      max-batch-size: 10000
+
+  cache:
+    ttl-minutes: 60
+    max-size: 1000
+
